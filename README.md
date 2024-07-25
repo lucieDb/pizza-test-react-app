@@ -1,4 +1,24 @@
-# Getting Started with Create React App
+# Welcome to my turnover app
+
+This is a React native application as part of a test. It allows to list some pizzerias and display their turnover per month over the entire year. The objective is to classify by the best pizzerias based on their annual turnover.
+
+### Prerequisites
+
+- Basic knowledge about javascript, react v.18.3.1 ([more specifically with Create React App](https://create-react-app.dev/docs/getting-started))
+- Please run `yarn install` to get required packages (you can also update packages by `yarn update`)
+
+## How to start the project
+
+- Download the project on github with [this link]()
+- apply the command line `npm start`
+- visit the http://localhost:3000
+
+## Change data
+
+If you want to modify pizzerias data, you can go on components/Pizzeria/pizzeriasData.js and apply new data. If something went wrong, take a look at the console on your web page, there will certainly be some information to guide you and correct. 
+
+# Documentation about app initialization with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
