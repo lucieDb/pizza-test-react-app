@@ -9,7 +9,10 @@ export const calculateYearlyData = (yearlyData) => {
       const dataForYear = yearlyData[year].filter(isValidPizzeria);
       // calculate totals and averages
       const totalRevenueForYear = dataForYear.reduce((sum, pizzeria) => sum + parseFloat(yearCalculator(pizzeria.revenue)), 0);
-      const averageRevenueForYear = totalRevenueForYear / dataForYear.length;
+      const averageRevenueForYear = 
+        totalRevenueForYear === 0 || dataForYear.length === 0
+        ? 0
+        : totalRevenueForYear / dataForYear.length;
   
       //add new data to the accumulator
       acc[year] = { data : dataForYear.map(pizzeria => ({
