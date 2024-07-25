@@ -72,6 +72,7 @@ test('changes year and updates data', () => {
   render(<Home yearlyData={mockYearlyData} />);
 
   // simulate user's choice with fireEvent
+  // combobox : it's able to select '2023' in the selectorYear
   fireEvent.change(screen.getByRole('combobox'), { target: { value: '2023' } });
   expect(screen.getByText(/1 pizzerias trouvées/i)).toBeInTheDocument();
   expect(screen.getByText(/CA Moyen/i)).toBeInTheDocument();
