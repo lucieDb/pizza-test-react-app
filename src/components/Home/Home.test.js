@@ -1,4 +1,4 @@
-import Home from './home';
+import Home from './Home';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { formatCurrency } from '../../utils/tools/formatCurrency';
 
