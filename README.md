@@ -9,7 +9,7 @@ This is a React native application as part of a test. It allows to list some piz
 
 ## How to start the project
 
-- Download the project on github with [this link]()
+- Download the project on github on your IDE 
 - apply the command line `npm start`
 - visit the http://localhost:3000
 

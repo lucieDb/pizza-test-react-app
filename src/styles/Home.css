@@ -1,0 +1,12 @@
+/* Home.css */
+.above-average {
+  color: green;
+}
+  
+.below-average {
+  color: orange;
+}
+
+.bold-text {
+  font-weight: bold;
+}
