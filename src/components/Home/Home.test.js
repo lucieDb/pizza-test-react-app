@@ -1,6 +1,6 @@
 import Home from './Home';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { formatCurrency } from '../../utils/tools/formatCurrency';
+import { formatCurrency } from 'utils/tools/formatCurrency';
 
 test('renders Home component with initial data', () => {
   const mockYearlyData = {

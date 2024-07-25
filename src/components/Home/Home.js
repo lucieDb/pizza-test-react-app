@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import YearSelector from '../yearSelector';
-import { formatCurrency  } from '../../utils/tools/formatCurrency';
-import { yearlyDataPropTypes } from '../../utils/validations/propTypesPizzeria';
+import { formatCurrency  } from 'utils/tools/formatCurrency';
+import { yearlyDataPropTypes } from 'utils/validations/propTypesPizzeria';
 import { Table, Row, Col } from 'antd';
 import { ArrowDownOutlined } from '@ant-design/icons';
-import '../../styles/Home.css';
+import 'styles/Home.css';
 
 const Home = ({ yearlyData }) => {
   // get current year

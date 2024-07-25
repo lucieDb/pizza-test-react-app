@@ -1,6 +1,6 @@
 import Pizzerias from './pizzeriasData';
-import { yearCalculator } from '../../utils/tools/yearCalculator';
-import { isValidPizzeria } from '../../utils/validations/validPizzeria';
+import { yearCalculator } from 'utils/tools/yearCalculator';
+import { isValidPizzeria } from 'utils/validations/validPizzeria';
 
 //build new array for each year with totals, averages and number of pizzerias
 export const calculateYearlyData = (yearlyData) => {

@@ -1,6 +1,6 @@
 import Pizzerias from './pizzeriasData';
-import { yearCalculator } from '../../utils/tools/yearCalculator';
-import { isValidPizzeria } from '../../utils/validations/validPizzeria';
+import { yearCalculator } from 'utils/tools/yearCalculator';
+import { isValidPizzeria } from 'utils/validations/validPizzeria';
 import { calculateYearlyData } from './Pizzerias';
 
 test('when calculate total revenue for the year 2024', () => {
