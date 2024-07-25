@@ -3,6 +3,7 @@ import Pizzerias from './pizzeriasData';
 test('should have data for 2024 and 2023', () => {
   expect(Pizzerias).toHaveProperty('2024');
   expect(Pizzerias).toHaveProperty('2023');
+  expect(Pizzerias).toHaveProperty('2025');
 });
 
 test('2024 data should contain 3 pizzerias', () => {
@@ -11,6 +12,10 @@ test('2024 data should contain 3 pizzerias', () => {
 
 test('2023 data should contain 3 pizzerias', () => {
   expect(Pizzerias['2023']).toHaveLength(2);
+});
+
+test('2025 data should contain 0 pizzeria', () => {
+  expect(Pizzerias['2025']).toHaveLength(0);
 });
 
 test('Pizzeria A revenue for January 2024 should be 4578.57', () => {

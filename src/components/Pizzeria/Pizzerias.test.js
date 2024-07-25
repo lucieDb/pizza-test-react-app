@@ -3,6 +3,13 @@ import { yearCalculator } from 'utils/tools/yearCalculator';
 import { isValidPizzeria } from 'utils/validations/validPizzeria';
 import { calculateYearlyData } from './Pizzerias';
 
+//TODO : fix alias for the test part
+//If you want to run the tests, please change the path import by the complet
+//path in Pizzerias.test.js and Pizzerias.js,
+//e.g :
+//from `import { formatCurrency } from 'utils/validations/validPizzeria';`
+//to `import { formatCurrency } from '../../utils/validations/validPizzeria';`
+
 test('when calculate total revenue for the year 2024', () => {
   const data = calculateYearlyData(Pizzerias);
   const total2024 = Pizzerias['2024'].reduce((sum, pizzeria) => sum + parseFloat(yearCalculator(pizzeria.revenue)), 0);

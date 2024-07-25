@@ -2,28 +2,35 @@ import Home from './Home';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { formatCurrency } from 'utils/tools/formatCurrency';
 
+//TODO : fix alias for the test part
+//If you want to run the tests, please change the path import by the complet
+//path in Home.test.js and Home.js,
+//e.g :
+//from `import { formatCurrency } from 'utils/tools/formatCurrency';`
+//to `import { formatCurrency } from '../../utils/tools/formatCurrency';`
+
 test('renders Home component with initial data', () => {
   const mockYearlyData = {
     2024: {
-      data: [
-        {
-          title: 'Pizzeria A',
-          revenue: { jan: 4578.57, feb: 559557, mar: 45.75, apr: 85, may: 1560.85, jun: 1.50, jul: 562.95, aug: 99.99, sep: 74.5, oct: 66.05, nov: 74.63, dec: 3495.15 },
-          totalRevenue: 567045.39
-        },
-        {
-          title: 'Pizzeria B',
-          revenue: { jan: 4578.57, feb: 559557, mar: 45.75, apr: 85, may: 1560.85, jun: 1.50, jul: 562.95, aug: 99.99, sep: 74.5, oct: 66.05, nov: 74.63, dec: 3495.15 },
-          totalRevenue: 567045.39
-        },
-      ],
+      data:
+        [
+          {
+            title: 'Pizzeria A',
+            revenue: { jan: 4578.57, feb: 559557, mar: 45.75, apr: 85, may: 1560.85, jun: 1.50, jul: 562, aug: 99, sep: 74.5, oct: 66.05, nov: 74, dec: 349 },
+            totalRevenue: 567053.22
+          },
+          {
+            title: 'Pizzeria B',
+            revenue: { jan: 4578.57, feb: 559557, mar: 1, apr: 85, may: 1560.85, jun: 1.50, jul: 562, aug: 99, sep: 74.5, oct: 66.05, nov: 74, dec: 349 },
+            totalRevenue: 567008.47
+          }
+        ],
       count: 2,
-      average: 567045.39,
-      total: 12
+      average: 567030.84,
+      total: 1134061.69
     }
   };
 
-  console.log("mockYearlyData value: ", mockYearlyData)
   render(<Home yearlyData={mockYearlyData} />);
 
   expect(screen.getByText(/Chiffre d'affaire/i)).toBeInTheDocument();
@@ -34,11 +41,31 @@ test('renders Home component with initial data', () => {
 
 test('changes year and updates data', () => {
   const mockYearlyData = {
-    2024: {
-      data: [{ title: 'Pizzeria A', revenue: { jan: 4578.57, feb: 559557, mar: 45.75, apr: 85, may: 1560.85, jun: 1.50, jul: 562.95, aug: 99.99, sep: 74.5, oct: 66.05, nov: 74.63, dec: 3495.15 }, totalRevenue: 567045.39 }],
+    2023: {
+      data:
+        [
+          {
+            title: 'Pizzeria R',
+            revenue: { jan: 4578.57, feb: 559557, mar: 45.75, apr: 85, may: 1560.85, jun: 1.50, jul: 562, aug: 99, sep: 74.5, oct: 66.05, nov: 74, dec: 349 },
+            totalRevenue: 567053.22
+          }
+        ],
       count: 1,
-      average: 567045.39,
-      total: 12
+      average: 567053.22,
+      total: 567053.22
+    },
+    2024: {
+      data:
+        [
+          {
+            title: 'Pizzeria Z',
+            revenue: { jan: 4578.57, feb: 559557, mar: 1, apr: 85, may: 1560.85, jun: 1.50, jul: 562, aug: 99, sep: 74.5, oct: 66.05, nov: 74, dec: 349 },
+            totalRevenue: 567008.47
+          }
+        ],
+      count: 1,
+      average: 567008.47,
+      total: 567008.47
     }
   };
 
@@ -53,10 +80,17 @@ test('changes year and updates data', () => {
 test('renders table columns correctly', () => {
   const mockYearlyData = {
     2024: {
-      data: [{ title: 'Pizzeria A', revenue: { jan: 4578.57, feb: 559557, mar: 45.75, apr: 85, may: 1560.85, jun: 1.50, jul: 562.95, aug: 99.99, sep: 74.5, oct: 66.05, nov: 74.63, dec: 3495.15 }, totalRevenue: 567045.39 }],
+      data:
+        [
+          {
+            title: 'Pizzeria B',
+            revenue: { jan: 4578.57, feb: 559557, mar: 1, apr: 85, may: 1560.85, jun: 1.50, jul: 562, aug: 99, sep: 74.5, oct: 66.05, nov: 74, dec: 349 },
+            totalRevenue: 567008.47
+          }
+        ],
       count: 1,
-      average: 567045.39,
-      total: 12
+      average: 567008.47,
+      total: 567008.47
     }
   };
 
@@ -85,4 +119,28 @@ test('formats number to currency correctly', () => {
   const expectedFormattedAmount = '1\u202f207,60\xa0€';
   
   expect(formattedAmount).toBe(expectedFormattedAmount);
+});
+
+test('formatCurrency : values are rendered correctly', () => {
+  const mockYearlyData = {
+    2024: {
+      data:
+        [
+          {
+            title: 'Pizzeria B',
+            revenue: { jan: 4578.57, feb: 559557, mar: 1, apr: 85, may: 1560.85, jun: 1.50, jul: 562, aug: 99, sep: 74.5, oct: 66.05, nov: 74, dec: 349 },
+            totalRevenue: 567008.47
+          }
+        ],
+      count: 1,
+      average: 567008.47,
+      total: 567008.47
+    }
+  };
+
+  render(<Home yearlyData={mockYearlyData} />);
+
+  expect(screen.getByText('567 008,47 €')).toBeInTheDocument();
+  expect(screen.getByText('1,00 €')).toBeInTheDocument();
+  expect(screen.getByText('74,50 €')).toBeInTheDocument();
 });
